@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 public class DemoApplication {
+	public static String portVariable="empty";
 	
 	 public static void main(String[] args) {
 	        String port = System.getenv("PORT");
+	        portVariable=port;
 	        if (port != null) {
 	            System.setProperty("server.port", port);
 	        } else {
@@ -24,7 +26,7 @@ public class DemoApplication {
 	class SideProController {
 	    @GetMapping("/")
 	    public String home() {
-	        return "Hello, SidePro!";
+	        return "Hello, SidePro!"+DemoApplication.portVariable;
 	    }
 	}
 
